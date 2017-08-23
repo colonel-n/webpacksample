@@ -67,3 +67,5 @@ public/javascripts/*.*
 public/stylesheets/*.css
 
 # End of https://www.gitignore.io/api/node
+
+.iml
