@@ -1,19 +1,22 @@
 <style>
-  .red {
-    color: #f00;
-  }
+    .red {
+        color: #f00;
+    }
 </style>
 
 <template>
-  <h1 class="red">{{msg}}</h1>
+    <section>
+        <h1 class="red">{{msg}}</h1>
+        <i class="glyphicon glyphicon-ok"></i>
+    </section>
 </template>
 
 <script>
-  module.exports = {
-    data: function () {
-      return {
-        msg: 'Hello world!'
-      }
+    module.exports = {
+        data: function () {
+            return {
+                msg: 'Hello world!'
+            }
+        }
     }
-  }
 </script>

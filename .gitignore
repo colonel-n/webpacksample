@@ -63,8 +63,8 @@ typings/
 
 .idea/
 
-public/javascripts/*.*
-public/stylesheets/*.css
+public/*
+!.keep
 
 # End of https://www.gitignore.io/api/node
 

@@ -5,7 +5,7 @@ module.exports = [
     {
         entry: __dirname + '/src/main.js',
         output: {
-            path: __dirname + "/public/javascripts",
+            path: __dirname + "/public/",
             filename: 'build.js'
         },
         module: {
@@ -13,31 +13,18 @@ module.exports = [
                 {test: /\.vue$/, loader: 'vue-loader'},
                 {
                     test: /\.css$/,
-                    loaders: ['style-loader', 'css-loader']
+                    loader: 'style-loader!css-loader'
                 },
                 {
                     test: /\.png$/,
-                    loader: "url-loader?limit=100000"
+                    loader: 'url-loader?limit=100000'
                 },
                 {
-                    test: /\.jpg$/,
-                    loader: "file-loader"
-                },
-                {
-                    test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-                    loader: 'url-loader?limit=10000&mimetype=application/font-woff'
-                },
-                {
-                    test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-                    loader: 'url-loader?limit=10000&mimetype=application/octet-stream'
-                },
-                {
-                    test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+                    test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+                    loader: 'url-loader?limit=10000'
+                }, {
+                    test: /\.(eot|ttf|wav|mp3)$/,
                     loader: 'file-loader'
-                },
-                {
-                    test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                    loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
                 },
                 {
                     test: /\.(js)$/,
@@ -56,8 +43,8 @@ module.exports = [
     {
         entry: __dirname + '/src/stylesheets/app.scss',
         output: {
-            path: __dirname + "/public/stylesheets",
-            filename: 'bundle.css'
+            path: __dirname + "/public",
+            filename: 'style.css'
         },
         module: {
             rules: [
@@ -73,7 +60,7 @@ module.exports = [
             ]
         },
         plugins: [
-            new ExtractTextPlugin('bundle.css')
+            new ExtractTextPlugin('style.css')
         ]
     },
 ]
