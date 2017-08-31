@@ -3,8 +3,8 @@
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
-      <li><router-link to="/">Root</router-link></li>
-      <li><router-link to="/world">World</router-link></li>
+      <router-link tag="li" to="/" exact><a>Root</a></router-link>
+      <router-link tag="li" to="/world" exact><a>World</a></router-link>
     </ul>
   </div>
 </template>
