@@ -1,11 +1,7 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require('webpack');
-if(process.env.NODE_ENV === 'production') {
-    var processEnv = '"production"';
-} else {
-    var processEnv = '"development"';
-}
+const PRODUCTION = process.env.NODE_ENV === 'production';
 module.exports = [
     {
         entry: path.resolve(path.join('src', 'main.js')),
@@ -45,15 +41,21 @@ module.exports = [
                 "node_modules"
             ],
             alias: {
-                'vue$': 'vue/dist/vue.esm.js'
+                'vue$': 'vue/dis' +
+                't/vue.esm.js'
             },
         },
         plugins: [
             new webpack.DefinePlugin({
                 'process.env': {
-                    NODE_ENV: processEnv
+                    NODE_ENV: JSON.stringify(process.env.NODE_ENV)
                 }
-            })
+            }),
+            ...(
+                PRODUCTION ? [
+                    new webpack.optimize.UglifyJsPlugin(),
+                ] : []
+            )
         ]
     },
     {
