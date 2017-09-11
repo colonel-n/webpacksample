@@ -1,11 +1,16 @@
 const path = require('path');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require('webpack');
+if(process.env.NODE_ENV === 'production') {
+    var processEnv = '"production"';
+} else {
+    var processEnv = '"development"';
+}
 module.exports = [
     {
-        entry: __dirname + '/src/main.js',
+        entry: path.resolve(path.join('src', 'main.js')),
         output: {
-            path: __dirname + "/public/",
+            path: path.resolve("public"),
             filename: 'build.js'
         },
         module: {
@@ -33,6 +38,7 @@ module.exports = [
                 }
             ]
         },
+        devtool: 'source-map',
         resolve: {
             extensions: ['.js', '.vue'],
             modules: [
@@ -41,12 +47,19 @@ module.exports = [
             alias: {
                 'vue$': 'vue/dist/vue.esm.js'
             },
-        }
+        },
+        plugins: [
+            new webpack.DefinePlugin({
+                'process.env': {
+                    NODE_ENV: processEnv
+                }
+            })
+        ]
     },
     {
-        entry: __dirname + '/src/stylesheets/app.scss',
+        entry: path.resolve(path.join('src', 'stylesheets', 'app.scss')),
         output: {
-            path: __dirname + "/public",
+            path: path.resolve("public"),
             filename: 'style.css'
         },
         module: {

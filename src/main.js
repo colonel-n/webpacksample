@@ -17,8 +17,6 @@ new Vue({
     router,
     render: h => h(AppView)
 });
-Vue.config.productionTip = false;
-Vue.config.devtools = false;
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
