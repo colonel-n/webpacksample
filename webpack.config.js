@@ -71,7 +71,7 @@ module.exports = [
                     use: ExtractTextPlugin.extract(
                         {
                             fallback: "style-loader",
-                            use: ["css-loader?minimize!sass-loader"]
+                            use: PRODUCTION ? ["css-loader?minimize!sass-loader"] : ["css-loader?minimize!sass-loader"]
                         }
                     )
                 }
