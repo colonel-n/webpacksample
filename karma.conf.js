@@ -1,12 +1,18 @@
 module.exports = function (config) {
     config.set({
-        frameworks: ['jasmine'],
+        frameworks: ['mocha', 'chai'],
         files: [
             'src/app.js',
             'test/*Spec.js'
         ],
+        preprocessors: {
+            'src/app.js': ['coverage'],
+        },
         browsers: ['Chrome'],
-        reporters: ['mocha'],
+        reporters: ['mocha', 'coverage', 'junit'],
+        junitReporter: {
+            outputDir: 'report'
+        },
         logLevel: config.LOG_DEBUG
     })
 }

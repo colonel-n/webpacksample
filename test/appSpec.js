@@ -1,5 +1,5 @@
-describe('add関数のテスト', function() {
-    it('1 + 2 は 3', function() {
-        expect(add(1, 2)).toBe(3);
+describe("karma and mocha testing", function () {
+    it("return hello", function () {
+        expect(add(1, 2)).to.equal(3);
     });
 });
