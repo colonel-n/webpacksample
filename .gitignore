@@ -67,7 +67,6 @@ public/*
 !.keep
 
 coverage/*
-report/*
 
 # End of https://www.gitignore.io/api/node
 
